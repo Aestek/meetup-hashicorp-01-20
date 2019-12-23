@@ -1,0 +1,24 @@
+{
+    "service": {
+        "name": "client",
+        "port": 8001,
+        "connect": {
+            "sidecar_service": {
+                "proxy": {
+                    "upstreams": [
+                        {
+                            "destination_name": "server",
+                            "local_bind_port": 9191
+                        }
+                    ]
+                }
+            }
+        },
+        "checks": [
+            {
+                "http": "http://127.0.0.1:8001",
+                "interval": "2s"
+            }
+        ]
+    }
+}

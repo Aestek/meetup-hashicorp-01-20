@@ -1,0 +1,15 @@
+{
+    "service": {
+        "name": "server",
+        "port": 8000,
+        "connect": {
+            "sidecar_service": {}
+        },
+        "checks": [
+            {
+                "http": "http://127.0.0.1:8000",
+                "interval": "2s"
+            }
+        ]
+    }
+}

@@ -1,0 +1,67 @@
+<html>
+
+<head>
+    <style>
+        html {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        h1 {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 30px;
+            border-bottom: 1px dashed black;
+        }
+
+        #stats {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 30px;
+        }
+
+
+        #requests {
+            max-width: 600px;
+            min-height: 20px;
+            background: #eee;
+            margin: 50px auto;
+            padding: 30px;
+            text-align: right;
+        }
+
+        #requests::before {
+            content: 'Requets:';
+            display: block;
+            float: left;
+
+        }
+
+        #body {
+            text-align: center;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script>
+        $(function () {
+            function fetch() {
+                $.ajax({
+                    url: '/stats',
+                    success: function (res) {
+                        var data = JSON.parse(res);
+                        $('#requests').text(data.requests);
+                    },
+                });
+            }
+            fetch();
+            setInterval(fetch, 1000);
+        });
+    </script>
+    <title>Connect demo server</title>
+</head>
+
+<body>
+    <h1>Connect demo server</h1>
+    <div id="requests"></div>
+</body>
+
+</html>

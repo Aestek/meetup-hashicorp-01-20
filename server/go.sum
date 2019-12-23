@@ -1,0 +1,4 @@
+github.com/JJ/pigo v0.0.0-20170314090201-efb9838067fd h1:hmjHvs6jY+4kqweNsF4lDNF4dBUYDD1QH5D4ro3l5xE=
+github.com/JJ/pigo v0.0.0-20170314090201-efb9838067fd/go.mod h1:PHcU00H64w4PViSiAluZKqlABMMemtxy4b2q4fZKxiU=
+github.com/rakyll/statik v0.1.6 h1:uICcfUXpgqtw2VopbIncslhAmE5hwc4g20TEyEENBNs=
+github.com/rakyll/statik v0.1.6/go.mod h1:OEi9wJV/fMUAGx1eNjq75DKDsJVuEv1U0oYdX6GX8Zs=
