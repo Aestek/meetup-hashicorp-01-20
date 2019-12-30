@@ -8,6 +8,7 @@ import (
 	"github.com/JJ/pigo"
 	_ "github.com/aestek/meetup-hashicorp-01-20/server/statik"
 	"github.com/rakyll/statik/fs"
+	"golang.org/x/time/rate"
 )
 
 type Stats struct {
@@ -31,12 +32,19 @@ func (s *Server) Run() error {
 		log.Fatal(err)
 	}
 
+	var limiter = rate.NewLimiter(20, 3)
+
 	// Serve the contents over HTTP.
 	http.Handle("/public/", http.StripPrefix("/public/", http.FileServer(statikFS)))
 	http.Handle("/", http.RedirectHandler("/public/index.html", http.StatusTemporaryRedirect))
 	http.HandleFunc("/hello", func(w http.ResponseWriter, r *http.Request) {
+		if !limiter.Allow() {
+			http.Error(w, http.StatusText(429), http.StatusTooManyRequests)
+			return
+		}
+
 		s.currentStats.Requests++
-		pi := pigo.Pi(3000)
+		pi := pigo.Pi(50)
 		w.Write([]byte("Pi is " + pi))
 	})
 

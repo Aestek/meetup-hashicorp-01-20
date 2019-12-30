@@ -21,28 +21,32 @@ type Client struct {
 
 	stats Stats
 	Stats chan Stats
+
+	throttle <-chan time.Time
 }
 
 func NewClient(target string, rate int) *Client {
 	return &Client{
 		client: &http.Client{
-			Timeout: time.Second,
+			//Timeout: time.Second,
 		},
-		target: target,
-		rate:   rate,
-		Stats:  make(chan Stats),
+		target:   target,
+		Stats:    make(chan Stats),
+		throttle: time.Tick(time.Second / time.Duration(rate)),
 	}
 }
 
 func (r *Client) Run() {
-	for {
-		start := time.Now()
-		r.req()
+	for i := 0; i < 200; i++ {
+		go r.loop()
+	}
 
-		st := time.Second/time.Duration(r.rate) - time.Since(start)
-		if st > 0 {
-			time.Sleep(st)
-		}
+	select {}
+}
+
+func (r *Client) loop() {
+	for range r.throttle {
+		r.req()
 	}
 }
 

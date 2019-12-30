@@ -2,3 +2,5 @@ github.com/JJ/pigo v0.0.0-20170314090201-efb9838067fd h1:hmjHvs6jY+4kqweNsF4lDNF
 github.com/JJ/pigo v0.0.0-20170314090201-efb9838067fd/go.mod h1:PHcU00H64w4PViSiAluZKqlABMMemtxy4b2q4fZKxiU=
 github.com/rakyll/statik v0.1.6 h1:uICcfUXpgqtw2VopbIncslhAmE5hwc4g20TEyEENBNs=
 github.com/rakyll/statik v0.1.6/go.mod h1:OEi9wJV/fMUAGx1eNjq75DKDsJVuEv1U0oYdX6GX8Zs=
+golang.org/x/time v0.0.0-20191024005414-555d28b269f0 h1:/5xXl8Y5W96D+TtHSlonuFqGHIWVuyCkGJLwGh9JJFs=
+golang.org/x/time v0.0.0-20191024005414-555d28b269f0/go.mod h1:tRJNPiyCQ0inRvYxbN9jk5I+vvW/OXSQhTDSoE431IQ=

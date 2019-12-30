@@ -1,8 +1,5 @@
-.PHONY: static build
+.PHONY: build
 
-build: static
+build:
 	go build
-
-static:
-	statik -src=static/
 
